@@ -1,8 +1,18 @@
+<!-- TOC -->
+* [Java Spring Boot PostgreSQL CRUD Example](#java-spring-boot-postgresql-crud-example)
+  * [Prerequisites](#prerequisites)
+  * [Project Structure](#project-structure)
+  * [Build & Run](#build--run)
+  * [API Usage](#api-usage)
+    * [Sample Requests](#sample-requests)
+  * [Swagger UI](#swagger-ui)
+<!-- TOC -->
+
 # Java Spring Boot PostgreSQL CRUD Example
 
 ## Prerequisites
 
-* JDK 17 or higher
+* JDK 17 or higher
 * Gradle (or use the provided Gradle Wrapper)
 * PostgreSQL database
 
