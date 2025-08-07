@@ -4,7 +4,8 @@
   * [Project Structure](#project-structure)
   * [Build & Run](#build--run)
   * [API Usage](#api-usage)
-    * [Sample Requests](#sample-requests)
+    * [User Requests](#user-requests)
+    * [Payment Requests](#payment-requests)
   * [Swagger UI](#swagger-ui)
 <!-- TOC -->
 
@@ -32,12 +33,16 @@ java-basic-crud-example
         │           └── demo
         │               ├── DemoApplication.java
         │               ├── controller
+        │               │   ├── PaymentController.java
         │               │   └── UserController.java
         │               ├── model
+        │               │   ├── Payment.java
         │               │   └── User.java
         │               ├── repository
+        │               │   ├── PaymentRepository.java
         │               │   └── UserRepository.java
         │               └── service
+        │                   ├── PaymentService.java
         │                   └── UserService.java
         └── resources
             └── application.properties
@@ -91,9 +96,9 @@ java-basic-crud-example
 
 ## API Usage
 
-This project provides a CRUD REST API for a `User` entity under the `/users` endpoint.
+This project provides CRUD REST APIs for `User` and `Payment` entities under the `/users` and `/payments` endpoints.
 
-### Sample Requests
+### User Requests
 
 * **Create a user**
 
@@ -129,6 +134,42 @@ This project provides a CRUD REST API for a `User` entity under the `/users` end
   curl -X DELETE http://localhost:8080/users/1
   ```
 
+### Payment Requests
+
+* **Create a payment**
+
+  ```bash
+  curl -X POST -H "Content-Type: application/json" \
+    -d '{"amount":100.50,"description":"Order #123"}' \
+    http://localhost:8080/payments/
+  ```
+
+* **Get all payments**
+
+  ```bash
+  curl http://localhost:8080/payments/
+  ```
+
+* **Get a payment by ID**
+
+  ```bash
+  curl http://localhost:8080/payments/1
+  ```
+
+* **Update a payment**
+
+  ```bash
+  curl -X PUT -H "Content-Type: application/json" \
+    -d '{"amount":150.75,"description":"Updated order"}' \
+    http://localhost:8080/payments/1
+  ```
+
+* **Delete a payment**
+
+  ```bash
+  curl -X DELETE http://localhost:8080/payments/1
+  ```
+
 ## Swagger UI
 
 To enable interactive API documentation:
@@ -144,7 +185,7 @@ To enable interactive API documentation:
    ```java
    @OpenAPIDefinition(
      info = @Info(
-       title = "User CRUD API",
+       title = "User & Payment CRUD API",
        version = "1.0",
        description = "Spring Boot CRUD example"
      )
