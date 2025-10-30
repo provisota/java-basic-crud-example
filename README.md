@@ -14,15 +14,14 @@
 ## Prerequisites
 
 * JDK 17 or higher
-* Gradle (or use the provided Gradle Wrapper)
+* Apache Maven 3.9+
 * PostgreSQL database
 
 ## Project Structure
 
 ```
 java-basic-crud-example
-├── build.gradle
-├── settings.gradle
+├── pom.xml
 ├── .gitignore
 ├── README.md
 └── src
@@ -57,40 +56,27 @@ java-basic-crud-example
    cd java-basic-crud-example
    ```
 
-2. **(Optional) Generate Gradle Wrapper**
-   If the `gradlew` scripts are missing:
+2. **Build the project**
 
    ```bash
-   gradle wrapper
+   mvn clean package
    ```
 
-3. **Build the project**
+   A JAR file will be created in `target/` (e.g., `java-basic-crud-example-0.0.1-SNAPSHOT.jar`).
 
-    * Using Gradle Wrapper (recommended):
+3. **Run the application**
 
-      ```bash
-      ./gradlew clean build
-      ```
-    * Or using system Gradle:
+   * Via Maven:
 
-      ```bash
-      gradle clean build
-      ```
+     ```bash
+     mvn spring-boot:run
+     ```
 
-   A JAR file will be created in `build/libs/` (e.g., `java-basic-crud-example-0.0.1-SNAPSHOT.jar`).
+   * Or by executing the packaged JAR:
 
-4. **Run the application**
-
-    * Via Gradle:
-
-      ```bash
-      ./gradlew bootRun
-      ```
-    * Or directly:
-
-      ```bash
-      java -jar build/libs/java-basic-crud-example-0.0.1-SNAPSHOT.jar
-      ```
+     ```bash
+     java -jar target/java-basic-crud-example-0.0.1-SNAPSHOT.jar
+     ```
 
    The application starts on port **8080**.
 
@@ -172,15 +158,9 @@ This project provides CRUD REST APIs for `User` and `Payment` entities under the
 
 ## Swagger UI
 
-To enable interactive API documentation:
+The project already includes the OpenAPI dependency (`springdoc-openapi-starter-webmvc-ui`) configured in `pom.xml`.
 
-1. **Add dependency** in `build.gradle`:
-
-   ```groovy
-   implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
-   ```
-
-2. **(Optional) Customize API info** by annotating `DemoApplication.java`:
+1. **(Optional) Customize API info** by annotating `DemoApplication.java`:
 
    ```java
    @OpenAPIDefinition(
@@ -192,9 +172,9 @@ To enable interactive API documentation:
    )
    ```
 
-3. **Rebuild and run** the application.
+2. **Rebuild and run** the application.
 
-4. **Open Swagger UI** in your browser:
+3. **Open Swagger UI** in your browser:
 
    ```
    http://localhost:8080/swagger-ui/index.html

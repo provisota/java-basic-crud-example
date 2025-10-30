@@ -1,3 +1,7 @@
+/target/
+/.mvn/
+/mvnw
+/mvnw.cmd
 /build/
 /.gradle/
 /out/
